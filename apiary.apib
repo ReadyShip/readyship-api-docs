@@ -1,0 +1,63 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+# <Group Products>
+
+1. List Products
+2. Get a Product
+
+## Products [/products]
+
+### List Products [GET]
+`Product` objects describe the WordPress websites which you're going to clone and provide your customers.  
+On this Whitelabel API, only you can do are list and retrieve. You can manage(add/edit) them on [the developer's admin panel](https://docs.readyship.co/products.html).
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes
+        + status (required)
+            + code: 200 (number, required)
+            + status: success (string)
+        + products (array)
+            + (object)
+                + title: AwesomeWPSite (string, required)
+                + development_url: https://example.com (string, required)
+                + description: hogehoge (string, required)
+                + thumb: xxxx (string, required)
+                + detail_url: http://hogehoge.com (string, required) - テンプレート紹介ページURL
+                + support_url: http://hogehoge.com (string, required) - サポートページURL
+                + document_url: http://hogehoge.com (string) - ドキュメントページURL
+                + supoprt_email: hoge@hoge.com (string, required) - サポートEmail
+
+### Get a Product [GET]
+
++ Parameters
+    + product_id: 123 (number, required)
+
++ Response 200 (application/json)
+    + Attributes
+        + status (required)
+            + code: 200 (number, required)
+            + status: success (string)
+        + product (required)
+            + preset: (string, required) - プリセット [normal, simple, ec] から選択
+            + title: abcdefghijklmn (string, required) - テンプレート名
+            + development_url: http://hogehoge.com (string, required) - 開発用URL
+            + preview_url: http://hogehoge.com (string, required) - プレビュー用URL
+            + usage_count: 30 (number, required) - website利用数
+            + avarage_reccuring_revenue: 1000 (number, required)
+            + statue: active (string, required) - 公開ステータス [active, close]
+            + cart_page_statue: open (string, required) - ECステータス [open, close]
+            + description: hogehoge (string, required)
+            + thumb: xxxx (string, required)
+            + detail_url: http://hogehoge.com (string, required) - テンプレート紹介ページURL
+            + support_url: http://hogehoge.com (string, required) - サポートページURL
+            + document_url: http://hogehoge.com (string) - ドキュメントページURL
+            + supoprt_email: hoge@hoge.com (string, required) - サポートEmail
+            + plan_group
+                + id: 123 (number, required) - プラングループID
+                + name: すごいプラングループ (string, required) - プラングループ名
+                + plans (array)
+                    + (object)
+                        + monthly_billing_amount: 100 (number, required) - 月額
+                        + hosting_type_master_id: 123 (number, required) - ホスティングタイプマスタID
